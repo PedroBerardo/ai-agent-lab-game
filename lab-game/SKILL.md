@@ -1,47 +1,35 @@
-# Lab Game Skill (Low Token)
+## Project Map
 
-## CORE
-- Priorize game feel > matemática.
-- Toda ação deve ter impacto perceptível no turno.
-- Evite turnos mortos.
+Use this map before exploring the codebase. Prefer editing known files directly instead of running broad searches.
 
-## BALANCE
-- Sem loops infinitos (mana, draw, shield).
-- Use limites por turno/ativação.
-- Balanceie por proporção (dano vs HP).
+### Core files
+- `index.html`: main game shell, menu, screens, modals, card generator iframe entry.
+- `styles.css`: global UI, cards, battle layout, map, tutorial, dev tools.
+- `js/cards.js`: base card library, card ids, card art aliases, `getCardArtPath`.
+- `js/ui.js`: main render functions, `createCardElement`, card visual rendering, card art `<img>` handling.
+- `js/game.js`: game state, run flow, combat flow, turn logic.
+- `js/effects.js`: card effect resolution, damage, shield, draw, mana, generated effects.
+- `js/map.js`: map generation, pathing, node types, shops/events/elites.
+- `js/relics.js`: relic pool, relic effects, relic reward logic.
+- `js/custom-cards.js`: custom/generated cards, localStorage cards, card image storage/sync.
+- `js/dev-tools.js`: dev card manager, enabled/disabled cards, starter deck editor.
+- `card-generator/index.html`: card generator UI.
+- `card-generator/script.js`: generator logic, export JSON, image/splash/template handling.
+- `card-generator/style.css`: generator visual layout.
 
-## DEFESA
-- Escudo não pode dominar.
-- Use cap/soft cap e conversões (ex: escudo -> dano).
+### Common task routing
+- Card art/splash bug: `js/cards.js`, `js/ui.js`, `js/custom-cards.js`, `card-generator/script.js`.
+- Card visual/layout bug: `styles.css`, `js/ui.js`.
+- Card effect/balance bug: `js/cards.js`, `js/effects.js`.
+- Structure/field bug: `js/game.js`, `js/ui.js`, `styles.css`.
+- Map/path/shop/event bug: `js/map.js`, `js/game.js`.
+- Relic bug: `js/relics.js`, `js/game.js`.
+- Tutorial bug: `js/ui.js`, `js/game.js`, `styles.css`.
+- Dev tools/custom deck bug: `js/dev-tools.js`, `js/custom-cards.js`, `js/cards.js`.
 
-## CARTAS
-- Efeito deve ser claro e forte.
-- Evite % pequenos em valores baixos.
-- Prefira valores fixos ou scaling visível.
-
-## ESTRUTURAS
-- Permanentes no campo.
-- Não voltam para mão/deck automaticamente.
-
-## MAPA
-- Sempre múltiplos caminhos válidos.
-- Sem eventos no primeiro combate da torre.
-
-## ECONOMIA
-- Custos geram decisão real.
-- Remoção limitada.
-- Evite economia inflada.
-
-## RELÍQUIAS
-- Fortes só em contextos certos (elite/boss/evento com custo).
-- Sem sinergias que geram infinito.
-
-## DECISÃO
-Antes de qualquer mudança:
-"Isso cria decisão real ou só atrasa o jogo?"
-Se não criar decisão → simplifique.
-
-## CODING
-- Patch incremental, sem refatorar tudo.
-- Reutilizar funções existentes.
-- Não quebrar sistemas não relacionados.
+### Behavior
+- Do not run broad exploration unless the target files above are insufficient.
+- Prefer inspecting only the listed files relevant to the task.
+- Do not print full files unless explicitly asked.
+- Apply incremental patches.
+- Avoid rewriting whole files.
